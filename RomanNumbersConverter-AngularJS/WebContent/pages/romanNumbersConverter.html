@@ -1,0 +1,47 @@
+<br />
+<center>
+	<img src="./resources/images/rmimage.jpg" width="320px" height="250px" />
+</center>
+<br />
+<form name="convertRomanNumberForm" role="form">
+	<div class="container">
+		<div align="center">
+			<h1 style="text-align: center;">Convertir N&uacute;mero Decimal
+				a Romano</h1>
+			<br />
+			<table width="50%">
+				<tr>
+					<td>
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon">N&uacute;mero Decimal</div>
+								<input class="form-control" placeholder="N&uacute;mero Decimal"
+									required="required" ng-model="numberToConvert" />
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td align="center">
+						<div class="form-group">
+							<div class="input-group">
+								<h3 align="center">
+									<span class="label label-primary">{{romanNumber}}</span>
+								</h3>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+
+			<div class="form-group">
+				<br />
+				<button type="submit" ng-click="convertToRomanNumber()"
+					class="btn btn-success">
+					<span class="glyphicon glyphicon-th-large"></span> Convertir
+					N&uacute;mero
+				</button>
+			</div>
+		</div>
+	</div>
+</form>
