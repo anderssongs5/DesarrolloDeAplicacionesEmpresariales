@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="co.edu.udea.we.mandl.model.dto.Kind" table="KIND"
+		catalog="mandeviceslending">
+		<id name="kind" type="string">
+			<column name="kind" length="55" />
+			<generator class="assigned" />
+		</id>
+		<property name="description" type="string">
+			<column name="description" length="150" />
+		</property>
+		<set name="devicesKinds" inverse="false" fetch="select" lazy="false">
+			<key>
+				<column name="kind" length="55" not-null="true" />
+			</key>
+			<one-to-many entity-name="co.edu.udea.we.mandl.model.dto.DeviceKind" />
+		</set>
+	</class>
+</hibernate-mapping>

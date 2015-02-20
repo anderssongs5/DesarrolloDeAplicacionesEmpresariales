@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="co.edu.udea.we.mandl.model.dto.Profile" table="PROFILE"
+		catalog="mandeviceslending">
+		<id name="profile" type="string">
+			<column name="profile" length="45" />
+			<generator class="assigned" />
+		</id>
+		<property name="description" type="string">
+			<column name="description" length="150" />
+		</property>
+		<set name="clients" inverse="true" fetch="select" lazy="true">
+			<key>
+				<column name="profile" length="45" not-null="true" />
+			</key>
+			<one-to-many class="co.edu.udea.we.mandl.model.dto.Client" />
+		</set>
+	</class>
+</hibernate-mapping>

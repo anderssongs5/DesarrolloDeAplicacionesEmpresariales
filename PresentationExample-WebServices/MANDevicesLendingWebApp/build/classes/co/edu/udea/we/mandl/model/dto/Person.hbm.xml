@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="co.edu.udea.we.mandl.model.dto.Person" table="PERSON"
+		catalog="mandeviceslending">
+		<composite-id name="id"
+			class="co.edu.udea.we.mandl.model.dto.PersonId">
+			<key-property name="idNumber" type="string">
+				<column name="id_number" length="15" />
+			</key-property>
+			<key-property name="documentType" type="string">
+				<column name="document_type" length="45" />
+			</key-property>
+		</composite-id>
+		<property name="firstNames" type="string">
+			<column name="first_names" length="40" not-null="true" />
+		</property>
+		<property name="lastNames" type="string">
+			<column name="last_names" length="40" not-null="true" />
+		</property>
+		<set name="clients" inverse="true" fetch="select" lazy="true">
+			<key>
+				<column name="person_id_number" length="15" not-null="true" />
+				<column name="person_document_type" length="45" not-null="true" />
+			</key>
+			<one-to-many class="co.edu.udea.we.mandl.model.dto.Client" />
+		</set>
+	</class>
+</hibernate-mapping>

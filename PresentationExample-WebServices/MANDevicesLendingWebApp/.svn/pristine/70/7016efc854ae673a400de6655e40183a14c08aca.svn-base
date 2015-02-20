@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="co.edu.udea.we.mandl.model.dto.Client" table="CLIENT"
+		catalog="mandeviceslending">
+		<id name="email" type="string">
+			<column name="email" length="45" />
+			<generator class="assigned" />
+		</id>
+		<many-to-one name="profile" class="co.edu.udea.we.mandl.model.dto.Profile"
+			fetch="join">
+			<column name="profile" length="45" not-null="true" />
+		</many-to-one>
+		<many-to-one name="person" class="co.edu.udea.we.mandl.model.dto.Person"
+			fetch="join">
+			<column name="person_id_number" length="15" not-null="true" />
+			<column name="person_document_type" length="45" not-null="true" />
+		</many-to-one>
+		<property name="password" type="string">
+			<column name="password" length="30" not-null="true" />
+		</property>
+		<property name="mobilePhoneNumber" type="string">
+			<column name="mobile_phone_number" length="25" />
+		</property>
+		<property name="homePhoneNumber" type="string">
+			<column name="home_phone_number" length="25" />
+		</property>
+		<set name="deviceStatuses" inverse="true" fetch="select" lazy="true">
+			<key>
+				<column name="client_user_name" length="45" not-null="true" />
+			</key>
+			<one-to-many class="co.edu.udea.we.mandl.model.dto.DeviceStatus" />
+		</set>
+	</class>
+</hibernate-mapping>

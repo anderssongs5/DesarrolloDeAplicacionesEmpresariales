@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE project>
+<project default="javadoc" name="MAN Devices Lending Web App Documentation">
+	<property name="src.dir" value="tst;src" />
+	<property name="doc.dir" value="./doc" />
+	<target name="javadoc">
+		<javadoc access="private" author="true" classpath="."
+			sourcepath="${src.dir}" destdir="${doc.dir}"
+			windowtitle="MAN Devices Lending Web App" splitindex="true"
+			use="true" version="true">
+			<link href="file:/${doc.dir}" />
+		</javadoc>
+	</target>
+</project>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	   http://www.springframework.org/schema/context
+	   http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<bean id="clientDAO"
+		class="co.edu.udea.we.mandl.persistence.dao.hibernate.impl.ClientDAOImpl"
+		scope="singleton">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="deviceDAO"
+		class="co.edu.udea.we.mandl.persistence.dao.hibernate.impl.DeviceDAOImpl"
+		scope="singleton">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="deviceKindDAO"
+		class="co.edu.udea.we.mandl.persistence.dao.hibernate.impl.DeviceKindDAOImpl"
+		scope="singleton">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="deviceStatusDAO"
+		class="co.edu.udea.we.mandl.persistence.dao.hibernate.impl.DeviceStatusDAOImpl"
+		scope="singleton">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="dispositionDAO"
+		class="co.edu.udea.we.mandl.persistence.dao.hibernate.impl.DispositionDAOImpl"
+		scope="singleton">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="kindDAO"
+		class="co.edu.udea.we.mandl.persistence.dao.hibernate.impl.KindDAOImpl"
+		scope="singleton">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="personDAO"
+		class="co.edu.udea.we.mandl.persistence.dao.hibernate.impl.PersonDAOImpl"
+		scope="singleton">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="profileDAO"
+		class="co.edu.udea.we.mandl.persistence.dao.hibernate.impl.ProfileDAOImpl"
+		scope="singleton">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+</beans>

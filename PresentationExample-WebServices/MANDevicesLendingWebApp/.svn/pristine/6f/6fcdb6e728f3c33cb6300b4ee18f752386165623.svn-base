@@ -1,0 +1,64 @@
+<br />
+<form name="evaluateLendingsForm" role="form"
+	ng-submit="onEvaluateLendings()">
+	<div ng-controller="lendingsEvaluationController" >
+		<div align="right">
+			<button type="submit" ng-click="logout()"
+				class="btn btn-default">
+				<span class="glyphicon glyphicon-circle-arrow-left"></span> Cerrar
+				Sesi&oacute;n
+			</button>
+		</div>
+		<div align="center">
+			<h1>Evaluaci&oacute;n de Pr&eacute;stamos</h1>
+			<div class="panel panel-info">
+				<div class="panel-heading">Dispositivos a Evaluar</div>
+				<div class="table-responsive">
+					<table align="center" class="table table-striped">
+						<thead>
+							<tr>
+								<th align="center">Dispositivo ID</th>
+								<th align="center">Nombre de Dispositivo</th>
+								<th align="center">Fecha de Inicio</th>
+								<th align="center">Hora de Inicio</th>
+								<th align="center">Fecha de Fin</th>
+								<th align="center">Hora de Fin</th>
+								<th align="center">Fecha de Petici&oacute;n</th>
+								<th align="center">Nombre de Usuario</th>
+								<th align="center">Evaluar</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="devicestatus in unsolvedDevicesFoundList">
+								<td align="center">{{devicestatus.device.id}}</td>
+								<td align="center">{{devicestatus.device.fullName}}</td>
+								<td align="center">{{devicestatus.startDate |
+									date:"fullDate" }}</td>
+								<td align="center">{{devicestatus.startTime |
+									date:"shortTime" }}</td>
+								<td align="center">{{devicestatus.endDate | date:"fullDate"
+									}}</td>
+								<td align="center">{{devicestatus.endTime |
+									date:"shortTime" }}</td>
+								<td align="center">{{devicestatus.requestDatetime |
+									date:"medium" }}</td>
+								<td align="center">{{devicestatus.client.email}}</td>
+								<td align="center"><select
+									ng-model="devicestatus.disposition.name">
+										<option value="RESERVADO PENDIENTE">Pendiente</option>
+										<option value="RESERVADO APROBADO">Aprobado</option>
+										<option value="RESERVADO NEGADO">Negado</option>
+								</select></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<button type="submit" ng-click="evaluateLendings()"
+				class="btn btn-primary">
+				<span class="glyphicon glyphicon-floppy-saved"></span> Evaluar
+				Pr&eacute;stamos
+			</button>
+		</div>
+	</div>
+</form>

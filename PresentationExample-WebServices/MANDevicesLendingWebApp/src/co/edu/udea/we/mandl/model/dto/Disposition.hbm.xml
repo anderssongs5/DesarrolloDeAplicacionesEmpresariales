@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="co.edu.udea.we.mandl.model.dto.Disposition" table="DISPOSITION"
+		catalog="mandeviceslending">
+		<id name="name" type="string">
+			<column name="name" length="40" />
+			<generator class="assigned" />
+		</id>
+		<property name="description" type="string">
+			<column name="description" length="150" />
+		</property>
+		<set name="deviceStatuses" inverse="true" fetch="select" lazy="true">
+			<key>
+				<column name="disposition_name" length="40" not-null="true" />
+			</key>
+			<one-to-many class="co.edu.udea.we.mandl.model.dto.DeviceStatus" />
+		</set>
+	</class>
+</hibernate-mapping>

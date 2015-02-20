@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="co.edu.udea.we.mandl.model.dto.Device" table="DEVICE"
+		catalog="mandeviceslending">
+		<id name="id" type="java.lang.Long">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<property name="fullName" type="string">
+			<column name="full_name" length="80" not-null="true" />
+		</property>
+		<property name="isAvailable" type="boolean">
+			<column name="is_available" not-null="true" />
+		</property>
+		<property name="description" type="string">
+			<column name="description" length="150" />
+		</property>
+		<property name="photoImage" type="string">
+			<column name="photo_image" length="60" />
+		</property>
+		<set name="deviceStatuses" inverse="true" fetch="select" lazy="true">
+			<key>
+				<column name="device_id" not-null="true" />
+			</key>
+			<one-to-many class="co.edu.udea.we.mandl.model.dto.DeviceStatus" />
+		</set>
+		<set name="devicesKinds" inverse="false" fetch="select" lazy="false">
+			<key>
+				<column name="device_id" not-null="true" />
+			</key>
+			<one-to-many entity-name="co.edu.udea.we.mandl.model.dto.DeviceKind" />
+		</set>
+	</class>
+</hibernate-mapping>

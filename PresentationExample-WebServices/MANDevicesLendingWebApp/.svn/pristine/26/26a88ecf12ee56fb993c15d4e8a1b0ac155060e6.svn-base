@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="co.edu.udea.we.mandl.model.dto.DeviceStatus" table="DEVICE_STATUS"
+		catalog="mandeviceslending">
+		<id name="id" type="java.lang.Long">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<many-to-one name="client" class="co.edu.udea.we.mandl.model.dto.Client"
+			fetch="join">
+			<column name="client_user_name" length="45" not-null="true" />
+		</many-to-one>
+		<many-to-one name="device" class="co.edu.udea.we.mandl.model.dto.Device"
+			fetch="join">
+			<column name="device_id" not-null="true" />
+		</many-to-one>
+		<many-to-one name="disposition"
+			class="co.edu.udea.we.mandl.model.dto.Disposition" fetch="join">
+			<column name="disposition_name" length="40" not-null="true" />
+		</many-to-one>
+		<property name="endDate" type="date">
+			<column name="end_date" length="10" not-null="true" />
+		</property>
+		<property name="startDate" type="date">
+			<column name="start_date" length="10" not-null="true" />
+		</property>
+		<property name="endTime" type="time">
+			<column name="end_time" length="8" not-null="true" />
+		</property>
+		<property name="startTime" type="time">
+			<column name="start_time" length="8" not-null="true" />
+		</property>
+		<property name="requestDatetime" type="timestamp">
+			<column name="request_datetime" length="19" not-null="true" />
+		</property>
+	</class>
+</hibernate-mapping>

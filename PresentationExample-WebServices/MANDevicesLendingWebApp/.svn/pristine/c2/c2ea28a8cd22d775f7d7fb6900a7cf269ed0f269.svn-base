@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	   http://www.springframework.org/schema/context
+	   http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<context:component-scan base-package="co.edu.udea.we.mandl.business">
+	</context:component-scan>
+	<context:component-scan base-package="co.edu.udea.we.mandl.persistance.dao">
+	</context:component-scan>
+	<context:component-scan base-package="co.edu.udea.we.mandl.webservice">
+	</context:component-scan>
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/MANDevicesLending">
+		</property>
+		<property name="username" value="developer">
+		</property>
+		<property name="password" value="developer">
+		</property>
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="mappingResources">
+			<list>
+				<value>co/edu/udea/we/mandl/model/dto/Client.hbm.xml
+				</value>
+				<value>co/edu/udea/we/mandl/model/dto/Device.hbm.xml
+				</value>
+				<value>co/edu/udea/we/mandl/model/dto/DeviceKind.hbm.xml
+				</value>
+				<value>co/edu/udea/we/mandl/model/dto/DeviceStatus.hbm.xml
+				</value>
+				<value>co/edu/udea/we/mandl/model/dto/Disposition.hbm.xml
+				</value>
+				<value>co/edu/udea/we/mandl/model/dto/Kind.hbm.xml
+				</value>
+				<value>co/edu/udea/we/mandl/model/dto/Person.hbm.xml
+				</value>
+				<value>co/edu/udea/we/mandl/model/dto/Profile.hbm.xml
+				</value>
+			</list>
+		</property>
+
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="javax.persistence.validation.mode">none</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<import resource="./spring-beans/spring-DAObeans.xml"></import>
+
+	<import resource="./spring-beans/spring-Businessbeans.xml"></import>
+</beans>

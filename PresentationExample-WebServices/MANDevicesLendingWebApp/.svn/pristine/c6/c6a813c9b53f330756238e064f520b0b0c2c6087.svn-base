@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="co.edu.udea.we.mandl.model.dto.DeviceKind" table="DEVICE_KIND"
+		catalog="mandeviceslending">
+		<composite-id name="id"
+			class="co.edu.udea.we.mandl.model.dto.DeviceKindId">
+			<key-property name="deviceId" type="java.lang.Long">
+				<column name="device_id" />
+			</key-property>
+			<key-property name="kind" type="string">
+				<column name="kind" length="55" />
+			</key-property>
+		</composite-id>
+	</class>
+</hibernate-mapping>

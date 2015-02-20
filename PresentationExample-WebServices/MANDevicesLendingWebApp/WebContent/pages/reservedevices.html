@@ -1,0 +1,58 @@
+<br />
+<form name="reserveDevicesForm" role="form">
+	<div ng-controller="reserveDevicesController" align="center">
+		<div align="right">
+			<button type="submit" ng-click="logout()" class="btn btn-default">
+				<span class="glyphicon glyphicon-circle-arrow-left"></span> Cerrar
+				Sesi&oacute;n
+			</button>
+		</div>
+		<h1>Reserva de Dispositivos</h1>
+		<div class="panel panel-info">
+			<div class="panel-heading">Dispositivos Disponibles</div>
+			<div class="table-responsive">
+				<table align="center" class="table table-striped">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Nombre</th>
+							<th>Descripci&oacute;n</th>
+							<th>Imagen</th>
+							<th>Fecha de P&eacute;stamo</th>
+							<th>Hora Inicial</th>
+							<th>Hora Final</th>
+							<th>¿Reservar?</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="availableDevice in availableDevicesFoundList">
+							<td>{{availableDevice.id}}</td>
+							<td>{{availableDevice.fullName}}</td>
+							<td>{{availableDevice.description}}</td>
+							<td><img src="./resources/images/default_device_icon.png"
+								width="40px" height="40px"></img></td>
+							<td><input type="date" placeholder="dd/MM/yyyy"
+								min-date="now" ng-model="availableDevice.startDate" /></td>
+							<td><input type="time" placeholder="00:00" min="08:00"
+								max="18:00" ng-model="availableDevice.startTime" /></td>
+							<td><input type="time" placeholder="00:00" min="08:00"
+								max="18:00" ng-model="availableDevice.endTime" /></td>
+							<td><input type="checkbox"
+								ng-model="availableDevice.isReserved" ng-true-value="'Si'"
+								ng-false-value="'No'" /> {{availableDevice.isReserved}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<h6>
+			Recuerde que el plazo m&aacute;ximo de pr&eacute;stamo son <b>8
+				horas.</b>
+		</h6>
+		<button type="submit" ng-click="reserveDevice()"
+			class="btn btn-primary">
+			<span class="glyphicon glyphicon-floppy-saved"></span> Efectuar
+			Reservas
+		</button>
+	</div>
+</form>
